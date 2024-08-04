@@ -22,7 +22,7 @@ const getCityWeather = async (req, res)=>{
 
 const getSearchHistory = async(req, res)=>{
     try{
-        const city = await CityModel.find(req.params.id)
+        const city = await CityModel.find()
         if (!city){
             return res.status(404).json({message: 'City NOT FOUND'})
         }
