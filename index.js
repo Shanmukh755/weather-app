@@ -9,7 +9,7 @@ const app = express()
 
 dotEnv.config()
 app.use(cors({
-    origin: 'https://weather-data-live.netlify.app/'
+    origin: 'https://weather-data-live.netlify.app'
 }))
 app.use(bodyParser.json())
 
