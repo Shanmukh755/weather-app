@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 8080
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
-    console.log('MongoDb connected succesfully')
+    console.log('MongoDB connected succesfully')
 })
 .catch((err)=>{
     console.log('Error: ', err)
