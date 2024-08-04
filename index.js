@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const dotEnv = require('dotenv')
-const https = require('https')
+const cityRouter = require('./routes/CityRoute') 
 
 const app = express()
 
@@ -21,18 +21,7 @@ mongoose.connect(process.env.MONGO_URI)
     console.log('Error: ', err)
 })
 
-app.get('/', (req, res)=>{
-    const apiKey = '2892ca25f05ddbf8bcd6baf11165af05'
-    const {city} = req.body
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-    https.get(url, (response)=>{
-        response.on('data', (data)=>{
-            const weatherData = JSON.parse(data)
-            console.log(weatherData)
-            res.send(weatherData)
-        })
-    })
-})
+app.use('/weather', cityRouter)
 
 app.listen(PORT, ()=>{
     console.log(`Server is started and running at PORT: ${PORT}`)
