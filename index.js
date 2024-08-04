@@ -22,6 +22,9 @@ mongoose.connect(process.env.MONGO_URI)
 })
 
 app.use('/weather', cityRouter)
+app.get('/check-app', (req, res)=>{
+    res.send("app is working")
+})
 
 app.listen(PORT, ()=>{
     console.log(`Server is started and running at PORT: ${PORT}`)
